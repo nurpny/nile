@@ -26,7 +26,6 @@ export const loggingIn = (email, password) => async dispatch => {
   let res
   try {
     res = await axios.post(`/auth/login`, {email, password})
-    console.log("line 29 res", res)
   } catch (authError) {
     return dispatch(getUser({error: authError}))
   }
@@ -55,9 +54,7 @@ export const signingUp = (email, password) => async dispatch => {
 
 export const loggingOut = () => async dispatch => {
   try {
-    console.log("LINE 50 in store logging out")
     await axios.post('/auth/logout')
-
     dispatch(removeUser())
   } catch (err) {
     console.error(err)

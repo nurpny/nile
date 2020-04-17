@@ -9,7 +9,6 @@ export const login = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    console.log("email", userInput.email, "password", userInput.password)
     props.loggingIn(userInput.email, userInput.password)
   }
 
