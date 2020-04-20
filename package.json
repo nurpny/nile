@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate",
+  "name": "nile",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "build-client-watch": "webpack -w",
     "start-server": "nodemon server --ignore public --ignore client",
     "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
-    "seed": "node script/seed.js",
+    "seed": "NODE_ENV='development' node script/seed.js",
     "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" --require @babel/polyfill --require @babel/register"
   },
   "author": "",

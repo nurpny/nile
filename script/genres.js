@@ -1,0 +1,18 @@
+module.exports = [
+    {name: "Biographies & Memoirs"},
+    {name: "Business & Money"},
+    {name: "Children's Books"},
+    {name: "Comics & Graphic Novels"},
+    {name: "Computers & Technology"},
+    {name: "Business & Money"},
+    {name: "Cookbooks, Food & Wine"},
+    {name: "History"},
+    {name: "Literature & Fiction"},
+    {name: "Mystery, Thriller & Suspense"},
+    {name: "Politics & Social Sciences"},
+    {name: "Reference"},
+    {name: "Religion & Spirituality"},
+    {name: "Romance"},
+    {name: "Science Fiction & Fantasy"},
+    {name: "Self-Help"},
+]
