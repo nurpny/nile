@@ -64,7 +64,7 @@ module.exports = [
   {
     isbn: "9780061132988",
     title: "Confessions of a Hero-Worshiper",
-    bookImageURL: devURL + "07.jpg",
+    bookImageURL: devURL + "08.jpg",
     price: 875,
     description: `As a boy, Stephen J. Dubner's hero was Franco Harris, the famed and mysterious running back for the Pittsburgh Steelers. When Dubner's father died, he became obsessed&#8212;he dreamed of his hero every night; he signed his school papers "Franco Dubner." Though they never met, it was Franco Harris who shepherded Dubner through a fatherless boyhood. Years later, Dubner journeys to meet his hero, certain that Harris will embrace him. And he is . . . well, wrong.
 

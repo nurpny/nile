@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { gettingSessionUser } from './store/user'
 import Nav from './components/nav'
+import AllBooks from './components/AllBooks'
+import Routes from './routes'
+
 
 export class app extends Component {
 
@@ -12,8 +15,10 @@ export class app extends Component {
   render() {
     return (
       <div>
+
         <Nav />
-        <h2>BOILERPLATE</h2>
+        <Routes />
+
       </div>
 
     )
