@@ -4,6 +4,7 @@ import thunkMiddleware from 'redux-thunk'
 import user from './user'
 import books from './books'
 import selectedBook from './singleBook'
+import cart from './cart'
 
 const middlewares = [thunkMiddleware];
 if (process.env.NODE_ENV === `development`) {
@@ -12,7 +13,7 @@ if (process.env.NODE_ENV === `development`) {
   middlewares.push(logger);
 }
 
-const rootReducer = combineReducers({user, books, selectedBook})
+const rootReducer = combineReducers({user, books, selectedBook, cart})
 const store = compose(applyMiddleware(...middlewares))(createStore)(rootReducer);
 
 export default store

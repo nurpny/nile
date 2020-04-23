@@ -7,6 +7,9 @@ export const theme = {
   fonts: {
     titleFt: "Roboto Mono, monospace",
     bookTitleFt: "Oswald, sans-serif"
-  }
+  },
+  cartButton: 'linear-gradient(to bottom right, #FAEBC9, #F1C75D)',
 
 }
+
+// 'linear-gradient(to bottom right, #FAEBC9, #F1C75D)
