@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const { Op } = require("sequelize");
 
 
 const { Order, Cart } = require('../db/index')
@@ -6,8 +7,6 @@ const { Order, Cart } = require('../db/index')
 
 router.get('/', async (req, res, next) => {
   try {
-    console.log("REQ USER***", req.user)
-    console.log("REQ SESSION***", req.sessionID)
     // const order = await
     // res.json({})
     res.sendStatus(200)
@@ -18,15 +17,15 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    console.log("REQ USER***", req.user)
-    console.log("REQ SESSION***", req.sessionID)
-    console.log("REQ BODY***", req.body)
     let order;
     if (req.user) {
       order = await Order.findOrCreate(
         {
-          where: { userId: req.userId },
-          defaults: { userId: req.userId }
+          where: { userId: req.user.id },
+          defaults: {
+            userId: req.user.id,
+            SessionID: req.sessionID
+          }
         }
       )
     } else {
@@ -37,13 +36,27 @@ router.post('/', async (req, res, next) => {
         }
       )
     }
-    order = order['0'].dataValues
-    const cart = await Cart.create({
+    order = order['0'].dataValues;
+    let cart = await Cart.findOne({
+      where: {
+        [Op.and]: [
+          { bookId: req.body.bookId },
+          { orderId: order.id }
+        ]
+      }
+    })
+    if (!cart) {
+      cart = await Cart.create({
       orderId: order.id,
       bookId: req.body.bookId,
       price: req.body.price,
       quantity: 1
-    })
+      })
+    } else {
+      cart.price = req.body.price;
+      cart.quantity += 1
+      await cart.save()
+    }
     res.json(cart)
   } catch (err) {
     next(err)

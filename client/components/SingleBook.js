@@ -58,7 +58,7 @@ class SingleBook extends Component {
               <div>By {authors && authors.reduce((acc, author, idx) => idx == 0 ? `${author.firstName} ${author.lastName}` : `${acc} & ${author.firstName} ${author.lastName}`, "")}</div>
             </div>
             <div>
-              <div>${price / 100}</div>
+              <div>$ {price / 100}</div>
               <AddToCartButton onClick = {() => this.props.handleClickAdd(id, price)}>Add to Cart</AddToCartButton>
             </div>
           </StyledBookTitleContainer>

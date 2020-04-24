@@ -50,18 +50,18 @@ const Order = db.define('order', {
   }
 })
 
-// const updateTotal = (order => {
-//   if (order.grossCost > 0) {
-//     if (order.grossCost < 40) {
-//       order.shippingCost = 800
-//     } else {
-//       order.shippingCost = 0
-//     }
-//     order.tax = Math.round(order.grossCost * taxRates[order.shippingState])
-//     order.total = order.grossCost + order.tax + order.shippingCost
-//   }
-// })
+const updateTotal = (order => {
+  if (order.grossCost > 0) {
+    if (order.grossCost < 40) {
+      order.shippingCost = 800
+    } else {
+      order.shippingCost = 0
+    }
+    order.tax = Math.round(order.grossCost * taxRates[order.shippingState])
+    order.total = order.grossCost + order.tax + order.shippingCost
+  }
+})
 
-// Order.addHook('beforeSave', 'beforeUpdate', updateTotal)
+Order.addHook('beforeSave', 'beforeUpdate', updateTotal)
 
 module.exports = Order
