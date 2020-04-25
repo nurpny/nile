@@ -4,7 +4,7 @@ import AllBooks from './components/AllBooks'
 import SingleBook from './components/SingleBook'
 import GenreBooks from './components/GenreBooks'
 import FrontPage from './components/FrontPage'
-
+import Cart from './components/Cart'
 
 
 export default function routes() {
@@ -13,6 +13,7 @@ export default function routes() {
       <Route path='/books' component={AllBooks} />
       <Route path='/genres/:id' component={GenreBooks} />
       <Route path='/book/:id' component={SingleBook} />
+      <Route path='/cart' component={Cart} />
       <Route path='/' component={FrontPage} />
     </Switch>
   )

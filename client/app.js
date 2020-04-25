@@ -8,9 +8,9 @@ import Routes from './routes'
 
 export class app extends Component {
 
-  // componentDidMount() {
-  //   this.props.gettingSessionUser()
-  // }
+  componentDidMount() {
+    this.props.gettingSessionUser()
+  }
 
   render() {
     return (

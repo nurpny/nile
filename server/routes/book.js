@@ -17,7 +17,7 @@ router.get('/:id', async (req, res, next) => {
         through: {attributes: []}
       }]})
     res.json(books)
-  } catch (err) {a
+  } catch (err) {
     next(err)
   }
 })

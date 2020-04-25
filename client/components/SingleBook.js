@@ -35,6 +35,12 @@ const StyledBookTitleContainer = styled.section`
   font-family: ${props => props.theme.fonts.bookTitleFt};
 `
 
+const StyledPriceContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
 const AddToCartButton = styled.button`
   border-radius: 5px;
   background: ${props => props.theme.cartButton};
@@ -57,10 +63,10 @@ class SingleBook extends Component {
               <div>{title}</div>
               <div>By {authors && authors.reduce((acc, author, idx) => idx == 0 ? `${author.firstName} ${author.lastName}` : `${acc} & ${author.firstName} ${author.lastName}`, "")}</div>
             </div>
-            <div>
+            <StyledPriceContainer>
               <div>$ {price / 100}</div>
               <AddToCartButton onClick = {() => this.props.handleClickAdd(id, price)}>Add to Cart</AddToCartButton>
-            </div>
+            </StyledPriceContainer>
           </StyledBookTitleContainer>
           <div>{description}</div>
 

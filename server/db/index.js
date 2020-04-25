@@ -24,6 +24,12 @@ Genre.belongsToMany(Book, {through: "book-genre"})
 Book.belongsToMany(Order, {through: Cart})
 Order.belongsToMany(Book, {through: Cart})
 
+Book.hasMany(Cart)
+Cart.belongsTo(Book)
+
+Order.hasMany(Cart)
+Cart.belongsTo(Order)
+
 User.hasMany(Order)
 Order.belongsTo(User)
 
