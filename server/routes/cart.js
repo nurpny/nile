@@ -24,7 +24,7 @@ router.get('/', async (req, res, next) => {
           dateCompleted: null
         }
       })
-    } let cart = {}
+    } let cart = []
     if (order) {
       cart = await Cart.findAll({
         where: {
