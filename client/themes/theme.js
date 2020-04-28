@@ -3,10 +3,12 @@ export const theme = {
     bg: '#E2BCA3',
     light: '#FCF9F2',
     border: '#605D59',
+    navDropDown: '#BC784C',
+
   },
   fonts: {
     titleFt: "Roboto Mono, monospace",
-    bookTitleFt: "Oswald, sans-serif"
+    bookTitleFt: "Oswald, sans-serif",
   },
   cartButton: 'linear-gradient(to bottom right, #FAEBC9, #F1C75D)',
 

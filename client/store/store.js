@@ -3,6 +3,7 @@ import logger from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import user from './user'
 import books from './books'
+import genres from './genres'
 import selectedBook from './singleBook'
 import cart from './cart'
 
@@ -13,7 +14,7 @@ if (process.env.NODE_ENV === `development`) {
   middlewares.push(logger);
 }
 
-const rootReducer = combineReducers({user, books, selectedBook, cart})
+const rootReducer = combineReducers({user, books, selectedBook, cart, genres})
 const store = compose(applyMiddleware(...middlewares))(createStore)(rootReducer);
 
 export default store
