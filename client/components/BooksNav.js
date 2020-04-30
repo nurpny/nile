@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import StyledNavBox from '../themes/StyledNavBox'
 import styled from 'styled-components'
 import { gettingGenres } from '../store/genres'
-
+import {Link} from 'react-router-dom'
 
 const StyledBookNavContainer = styled(StyledNavBox)`
   right: 250px;
@@ -32,7 +32,8 @@ export class BooksNav extends Component {
     return (
       <StyledBookNavContainer>
       <StyledBookNavInnerContainer>
-        <div> All Books </div>
+        <Link to="/books"><div>All Books</div></Link>
+        <div>{"\n"}</div>
         <div> Books by Category </div>
         {this.props.genres && this.props.genres.map(genre => <div key={genre.id}>{genre.name}</div>)}
         </StyledBookNavInnerContainer>

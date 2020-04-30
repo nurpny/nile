@@ -10,8 +10,8 @@ import Signup from './components/Signup'
 export default function routes() {
   return (
     <Switch>
+      <Route path='/books/:id' component={AllBooks} />
       <Route path='/books' component={AllBooks} />
-      <Route path='/genres/:id' component={GenreBooks} />
       <Route path='/book/:id' component={SingleBook} />
       <Route path='/cart' component={Cart} />
       <Route path='/signup' component={Signup} />

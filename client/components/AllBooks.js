@@ -29,11 +29,10 @@ const StyledImg = styled.img`
 
 class AllBooks extends Component {
   componentDidMount() {
-    this.props.onLoadBooks()
+    this.props.onLoadBooks(this.props.match.params.id)
   }
 
   render() {
-    if (this.props.books.length > 0) { console.log(this.props.books.map(book => book.bookImageURL)) }
     return (
       <StyledBooksContainer>
         {this.props.books &&
@@ -47,12 +46,12 @@ class AllBooks extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   books: state.books
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  onLoadBooks: () => dispatch(gettingBooks())
+  onLoadBooks: (genreId) => dispatch(gettingBooks(genreId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllBooks)

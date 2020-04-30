@@ -11,9 +11,14 @@ const getBooks = books => ({type: GET_BOOKS, books})
 
 
 // Thunk Creators
-export const gettingBooks = () => async dispatch => {
+export const gettingBooks = (genreId) => async dispatch => {
   try {
-    const res = await axios.get('/api/books')
+    let res;
+    if (!genreId) {
+      res = await axios.get('/api/books')
+    } else {
+      res = await axios.get('/api/books/' + genreId)
+    }
     dispatch(getBooks(res.data))
   } catch (err) {
     console.error(err)

@@ -15,11 +15,26 @@ const Cart = require('./models/Cart')
 Book.hasOne(Inventory)
 Inventory.belongsTo(Book)
 
+
 Book.belongsToMany(Author, {through: "book-author"})
 Author.belongsToMany(Book, {through: "book-author"})
 
+// Book.hasMany(db.models['book-author'])
+// db.models['book-author'].belongsTo(Book)
+
+// Author.hasMany(db.models['book-author'])
+// db.models['book-author'].belongsTo(Author)
+
+
 Book.belongsToMany(Genre, {through: "book-genre"})
 Genre.belongsToMany(Book, {through: "book-genre"})
+
+// Book.hasMany(db.models['book-genre'])
+// db.models['book-genre'].belongsTo(Book)
+
+// Genre.hasMany(db.models['book-genre'])
+// db.models['book-genre'].belongsTo(Genre)
+
 
 Book.belongsToMany(Order, {through: Cart})
 Order.belongsToMany(Book, {through: Cart})
@@ -32,5 +47,8 @@ Cart.belongsTo(Order)
 
 User.hasMany(Order)
 Order.belongsTo(User)
+
+
+
 
 module.exports = {db, User, Book, Author,  Inventory, Genre, Order, Cart}
