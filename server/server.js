@@ -64,6 +64,9 @@ app.use(passport.session());
 // serving static files in public folder
 app.use(express.static(path.join(__dirname,'..','public')))
 
+// serving stripe
+app.post('/stripe/charge', require('./routes/postCharge'))
+
 // routes
 app.use('/api', require('./routes/api'))
 app.use('/auth', require('./routes/auth'))

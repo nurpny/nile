@@ -52,12 +52,14 @@ const Order = db.define('order', {
 
 const updateTotal = (order => {
   if (order.grossCost > 0) {
-    if (order.grossCost < 40) {
+    if (order.grossCost < 4000) {
       order.shippingCost = 800
     } else {
       order.shippingCost = 0
     }
-    order.tax = Math.round(order.grossCost * taxRates[order.shippingState])
+    if (order.shippingState) {
+      order.tax = Math.round(order.grossCost * taxRates[order.shippingState])
+    }
     order.total = order.grossCost + order.tax + order.shippingCost
   }
 })

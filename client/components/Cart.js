@@ -2,34 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { gettingCart } from '../store/cart'
 import styled from 'styled-components'
-import StyledContainer from '../themes/StyledContainer'
+import { StyledContainer, StyledLeftContainer, StyledRightContainer, StyledFlexContainer} from '../themes/StyledContainer'
+import { updatingGrossTot } from '../store/order'
 
 
-const StyledFlexContainer = styled.section`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    min-height: 80vh;
-    min-width: 80vh;
-`
-
-const StyledCartContainer = styled(StyledContainer)`
-    min-width: 60%;
-    max-width: 100%;
-    margin: 10px 25px 10px 20px;
-    display: grid;
-    grid-column: 1fr;
-`
 const StyledCartTitle = styled.section`
   font-family: ${props => props.theme.fonts.bookTitleFt};
   font-size: 1.0rem;
 `
 
-const StyledAmountContainer = styled(StyledContainer)`
-    min-width: 30%;
-    max-width: 100%;
-    margin: 10px 20px 10px 25px;
-`
 
 const StyledItemContainer = styled.section`
   display: grid;
@@ -43,13 +24,27 @@ const StyledBookImg = styled.img`
 `
 
 export class Cart extends Component {
-  componentDidMount() {
-    this.props.onLoadCart()
+  constructor(props) {
+    super();
+    this.state = {subtotal:0};
+    this.onSubmit = this.onSubmit.bind(this)
   }
+
+  async componentDidMount() {
+    await this.props.onLoadCart()
+    this.setState( {subtotal: this.props.cart.reduce((acc, item) => acc += item.quantity * item.price, 0)})
+  }
+
+  async onSubmit(evt) {
+    evt.preventDefault();
+    await this.props.onSubmit(this.props.cart[0].orderId, this.state.subtotal);
+    this.props.history.push('/checkout')
+  }
+
   render() {
     return (
       <StyledFlexContainer>
-        <StyledCartContainer>
+        <StyledLeftContainer>
           <StyledCartTitle>Shopping Cart</StyledCartTitle>
           {this.props.cart.map(cartItem =>
             < StyledItemContainer key={cartItem.bookId} >
@@ -60,14 +55,13 @@ export class Cart extends Component {
             </ StyledItemContainer>
           )}
 
-        </StyledCartContainer>
-        <StyledAmountContainer>
+        </StyledLeftContainer>
+        <StyledRightContainer>
           <StyledCartTitle>Subtotal:
-            $ {this.props.cart ? this.props.cart.reduce((acc, item) => acc += item.quantity * item.price, 0)/100: $0}
+            $ {this.state.subtotal/100}
+            <button type="submit" onClick={this.onSubmit}>Click To Pay</button>
           </StyledCartTitle>
-
-
-        </StyledAmountContainer>
+        </StyledRightContainer>
 
       </StyledFlexContainer >
     )
@@ -79,7 +73,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onLoadCart: () => dispatch(gettingCart())
+  onLoadCart: () => dispatch(gettingCart()),
+  onSubmit: (orderId, subtotal) => dispatch(updatingGrossTot(orderId, subtotal))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

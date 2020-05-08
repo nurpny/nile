@@ -6,6 +6,7 @@ import GenreBooks from './components/GenreBooks'
 import FrontPage from './components/FrontPage'
 import Cart from './components/Cart'
 import Signup from './components/Signup'
+import Checkout from './components/Checkout'
 
 export default function routes() {
   return (
@@ -14,6 +15,7 @@ export default function routes() {
       <Route path='/books' component={AllBooks} />
       <Route path='/book/:id' component={SingleBook} />
       <Route path='/cart' component={Cart} />
+      <Route path='/checkout' component={ Checkout } />
       <Route path='/signup' component={Signup} />
       <Route path='/' component={FrontPage} />
     </Switch>

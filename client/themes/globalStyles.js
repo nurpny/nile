@@ -15,5 +15,9 @@ export const GlobalStyle = createGlobalStyle`
     font: 500 0.8rem Roboto, sans-serif;
     background-color: ${props => props.theme.colors.bg}
   }
+
+  form {
+    width: 100%;
+  }
 `;
 

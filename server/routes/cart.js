@@ -6,8 +6,6 @@ const { Order, Cart, Book } = require('../db/index')
 
 
 router.get('/', async (req, res, next) => {
-  console.log("REQ USER", req.user)
-  console.log("REQ SESSION ID", req.sessionID)
   try {
     let order;
     if (req.user) {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { gettingBooks } from '../store/books'
 import { Link } from 'react-router-dom'
-import StyledContainer from '../themes/StyledContainer'
+import { StyledContainer } from '../themes/StyledContainer'
 
 const StyledBooksContainer = styled(StyledContainer)`
   flex-direction: row;

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { gettingSingleBook } from '../store/singleBook'
 import styled from 'styled-components'
-import StyledContainer from '../themes/StyledContainer'
+import { StyledContainer } from '../themes/StyledContainer'
 import { addingToCart } from '../store/cart'
 
 const StyledImg = styled.img`
