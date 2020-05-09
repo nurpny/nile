@@ -48,7 +48,7 @@ export class Cart extends Component {
           <StyledCartTitle>Shopping Cart</StyledCartTitle>
           {this.props.cart.map(cartItem =>
             < StyledItemContainer key={cartItem.bookId} >
-              <StyledBookImg src={cartItem.book.bookImageURL} />
+              <StyledBookImg src={cartItem.book.imageUrl} />
               <div>{cartItem.book.title}</div>
               <div>x {cartItem.quantity}</div>
               <div>$ {cartItem.price/100}</div>

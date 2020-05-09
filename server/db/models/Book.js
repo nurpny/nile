@@ -22,7 +22,7 @@ const Book = db.define('book', {
   abridgedTitle: {
     type: Sequelize.STRING,
   },
-  bookImageURL: {
+  imageUrl: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {

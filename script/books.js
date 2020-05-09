@@ -4,7 +4,7 @@ module.exports = [
   {
     isbn: "0140067477",
     title: "The Tao of Pooh",
-    bookImageURL: devURL + "01.jpg",
+    imageUrl: devURL + "01.jpg",
     price: 1000,
     description: `Author Benjamin Hoff shows that the philosophy of Winnie-the-Pooh is amazingly consistent with the principles of Taoism and demonstrates how you can use these principles in your daily life.
 
@@ -13,7 +13,7 @@ module.exports = [
   {
     isbn: "9780060555665",
     title: "The Intelligent Investor",
-    bookImageURL: devURL + "02.jpg",
+    imageUrl: devURL + "02.jpg",
     price: 1200,
     description: `The Classic Text Annotated to Update Graham's Timeless Wisdom for Today's Market Conditions
 
@@ -24,7 +24,7 @@ module.exports = [
   {
     isbn: "9780321884916",
     title: "Learn Python the Hard Way",
-    bookImageURL: devURL + "03.jpg",
+    imageUrl: devURL + "03.jpg",
     price: 3300,
     description: `Zed Shaw has perfected the world’s best system for learning Python 3. Follow it and you will succeed—just like the millions of beginners Zed has taught to date! You bring the discipline, commitment, and persistence; the author supplies everything else.
 
@@ -33,7 +33,7 @@ module.exports = [
   {
     isbn: "9781593279509",
     title: "Eloquent JavaScript",
-    bookImageURL: devURL + "04.jpg",
+    imageUrl: devURL + "04.jpg",
     price: 2400,
     description: `JavaScript lies at the heart of almost every modern web application, from social apps like Twitter to browser-based game frameworks like Phaser and Babylon. Though simple for beginners to pick up and play with, JavaScript is a flexible, complex language that you can use to build full-scale applications.
 
@@ -42,14 +42,14 @@ module.exports = [
   {
     isbn: "9781594631931",
     title: "The Kite Runner",
-    bookImageURL: devURL + "05.jpg",
+    imageUrl: devURL + "05.jpg",
     price: 1200,
     description: `The unforgettable, heartbreaking story of the unlikely friendship between a wealthy boy and the son of his father’s servant, caught in the tragic sweep of history, The Kite Runner transports readers to Afghanistan at a tense and crucial moment of change and destruction. A powerful story of friendship, it is also about the power of reading, the price of betrayal, and the possibility of redemption; and an exploration of the power of fathers over sons—their love, their sacrifices, their lies.`
   },
   {
     isbn: "9780739489505",
     title: "A Thousand Splendid Suns",
-    bookImageURL: devURL + "06.jpg",
+    imageUrl: devURL + "06.jpg",
     price: 1225,
     description: `Born a generation apart and with very different ideas about love and family, Mariam and Laila are two women brought jarringly together by war, by loss and by fate. As they endure the ever escalating dangers around them-in their home as well as in the streets of Kabul-they come to form a bond that makes them both sisters and mother-daughter to each other, and that will ultimately alter the course not just of their own lives but of the next generation. With heart-wrenching power and suspense, Hosseini shows how a woman's love for her family can move her to shocking and heroic acts of self-sacrifice, and that in the end it is love, or even the memory of love, that is often the key to survival.
     A stunning accomplishment, A Thousand Splendid Suns is a haunting, heartbreaking, compelling story of an unforgiving time, an unlikely friendship, and an indestructible love.`
@@ -57,14 +57,14 @@ module.exports = [
   {
     isbn: "9780061245138",
     title: "Freakonomics",
-    bookImageURL: devURL + "07.jpg",
+    imageUrl: devURL + "07.jpg",
     price: 1805,
     description: `Which is more dangerous, a gun or a swimming pool? Which should be feared more: snakes or french fries? Why do sumo wrestlers cheat? In this groundbreaking book, leading economist Steven Levitt—Professor of Economics at the University of Chicago and winner of the American Economic Association’s John Bates Clark medal for the economist under 40 who has made the greatest contribution to the discipline—reveals that the answers. Joined by acclaimed author and podcast host Stephen J. Dubner, Levitt presents a brilliant—and brilliantly entertaining—account of how incentives of the most hidden sort drive behavior in ways that turn conventional wisdom on its head.`
   },
   {
     isbn: "9780061132988",
     title: "Confessions of a Hero-Worshiper",
-    bookImageURL: devURL + "08.jpg",
+    imageUrl: devURL + "08.jpg",
     price: 875,
     description: `As a boy, Stephen J. Dubner's hero was Franco Harris, the famed and mysterious running back for the Pittsburgh Steelers. When Dubner's father died, he became obsessed&#8212;he dreamed of his hero every night; he signed his school papers "Franco Dubner." Though they never met, it was Franco Harris who shepherded Dubner through a fatherless boyhood. Years later, Dubner journeys to meet his hero, certain that Harris will embrace him. And he is . . . well, wrong.
 

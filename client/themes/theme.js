@@ -4,7 +4,7 @@ export const theme = {
     light: '#FCF9F2',
     border: '#605D59',
     navDropDown: '#BC784C',
-
+    grey: "#969A97",
   },
   fonts: {
     titleFt: "Roboto Mono, monospace",

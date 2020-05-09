@@ -7,6 +7,7 @@ import FrontPage from './components/FrontPage'
 import Cart from './components/Cart'
 import Signup from './components/Signup'
 import Checkout from './components/Checkout'
+import OrderComplete from './components/OrderComplete'
 
 export default function routes() {
   return (
@@ -17,6 +18,7 @@ export default function routes() {
       <Route path='/cart' component={Cart} />
       <Route path='/checkout' component={ Checkout } />
       <Route path='/signup' component={Signup} />
+      <Route path='/ordercomplete' component={OrderComplete} />
       <Route path='/' component={FrontPage} />
     </Switch>
   )

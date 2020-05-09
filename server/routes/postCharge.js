@@ -6,17 +6,12 @@ router.get('/', async (req, res) => {
   try {
     const { amount, source, receipt_email } = req.body
 
-    console.log("STRIPE SECRET", process.env.STRIPE_SECRET)
-    console.log("stripe in express", stripe )
-
     const charge = await stripe.charges.create({
       amount,
       currency: 'usd',
       source,
       receipt_email
     })
-
-    console.log("charge", charge);
 
     if (!charge) throw new Error('charge unsuccessful')
 

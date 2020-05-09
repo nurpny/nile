@@ -26,7 +26,6 @@ export class BooksNav extends Component {
   }
 
   render() {
-    console.log(this.props);
 
 
     return (

@@ -10,7 +10,6 @@ const StyledAddressContainer = styled.section`
 `
 const StyledAddrVal = styled.section`
   grid-area: addrVal;
-
 `
 
 export default function Address(props) {

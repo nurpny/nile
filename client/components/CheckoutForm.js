@@ -1,31 +1,33 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux'
+import {completingOrder} from '../store/order'
 
 const CARD_OPTIONS = {
   iconStyle: 'solid',
   style: {
     base: {
-      iconColor: '#c4f0ff',
-      color: '#fff',
+      iconColor: '#969A97',
+      color: 'black',
       fontWeight: 500,
       fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
-      fontSize: '16px',
+      fontSize: '12px',
       fontSmoothing: 'antialiased',
       ':-webkit-autofill': {
-        color: '#fce883',
+        color: '#969A97',
       },
       '::placeholder': {
-        color: '#87bbfd',
+        color: '#969A97',
       },
     },
     invalid: {
-      iconColor: '#ffc7ee',
-      color: '#ffc7ee',
+      iconColor: '#F05D5E',
+      color: '#F05D5E',
     },
   },
 };
 
-const CheckoutForm = () => {
+const CheckoutForm = (props) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -51,15 +53,18 @@ const CheckoutForm = () => {
     });
 
     if (error) {
-      console.log('[error]', error);
+      alert('[error]', error);
     } else {
-      console.log('[PaymentMethod]', paymentMethod);
+      // complete order
+      await props.onSubmitOrder(props.order.id);
+      props.history.push('/ordercomplete');
     }
   };
 
   return (
+
     <form onSubmit={handleSubmit}>
-      <CardElement options={CARD_OPTIONS}/>
+      <CardElement options={CARD_OPTIONS} />
       <button type="submit" disabled={!stripe}>
         Pay
       </button>
@@ -67,4 +72,14 @@ const CheckoutForm = () => {
   );
 };
 
-export default CheckoutForm
+
+const mapStateToProps = (state) => ({
+  order: state.order
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  onSubmitOrder: (orderId) => dispatch(completingOrder(orderId))
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckoutForm)

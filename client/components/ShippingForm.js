@@ -5,12 +5,6 @@ import ShippingAddress from './ShippingAddress'
 import { updatingShipping } from '../store/order'
 import styled from 'styled-components'
 
-// const currentDate = new Date()
-// let options = { year: 'numeric', month: '2-digit', day: '2-digit' }
-// const dateTimeFormat = new Intl.DateTimeFormat('en-US', options)
-// const [{ value: mo }, , { value: dt }, , { value: yr }] = dateTimeFormat.formatToParts(currentDate)
-// const maxDate = `${yr - 18}-${mo}-${dt}`
-// const minDate = `${yr - 120}-${mo}-${dt}`
 
 const StyledInput = styled.input`
   width: 80%;

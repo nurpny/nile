@@ -38,7 +38,7 @@ class AllBooks extends Component {
         {this.props.books &&
           this.props.books.map(book =>
             <StyledBookSubContainer key={book.id}>
-              <Link to={"/book/" + book.id}><StyledImg src={book.bookImageURL} /></Link>
+              <Link to={"/book/" + book.id}><StyledImg src={book.imageUrl} /></Link>
             </StyledBookSubContainer>)
         }
       </StyledBooksContainer>

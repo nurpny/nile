@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
     } else {
       order = await Order.findOne({
         where: {
-          SessionID: req.sessionID,
+          sessionID: req.sessionID,
           dateCompleted: null
         }
       })
@@ -30,7 +30,7 @@ router.get('/', async (req, res, next) => {
         },
         include: [{
           model: Book,
-          attributes: ["bookImageURL", "title"]
+          attributes: ["imageUrl", "title"]
         }]
       })
     }
@@ -42,43 +42,51 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    let order;
-    if (req.user) {
-      order = await Order.findOrCreate(
-        {
-          where: {
-            userId: req.user.id,
-            dateCompleted: null,
-          },
-          defaults: {
-            userId: req.user.id,
-            SessionID: req.sessionID
+    let orderId = req.body.orderId;
+    if (!orderId) {
+      let order;
+      if (req.user) {
+        order = await Order.findOrCreate(
+          {
+            where: {
+              userId: req.user.id,
+              dateCompleted: null,
+            },
+            defaults: {
+              userId: req.user.id,
+              sessionID: req.sessionID
+            }
           }
-        }
-      )
-    } else {
-      order = await Order.findOrCreate(
-        {
-          where: {
-            SessionID: req.sessionID,
-            dateCompleted: null
-          },
-          defaults: { SessionID: req.sessionID }
-        }
-      )
+        )
+      } else {
+        order = await Order.findOrCreate(
+          {
+            where: {
+              sessionID: req.sessionID,
+              dateCompleted: null
+            },
+            defaults: { sessionID: req.sessionID }
+          }
+        )
+      }
+      order = order['0'].dataValues;
+      orderId = order.id;
     }
-    order = order['0'].dataValues;
+
     let cart = await Cart.findOne({
       where: {
         [Op.and]: [
           { bookId: req.body.bookId },
-          { orderId: order.id }
+          { orderId: orderId }
         ]
-      }
+      }, include: [{
+        model: Book,
+        attributes: ["imageUrl", "title"]
+      }]
     })
     if (!cart) {
       cart = await Cart.create({
-        orderId: order.id,
+        orderId: orderId,
         bookId: req.body.bookId,
         price: req.body.price,
         quantity: 1

@@ -53,10 +53,11 @@ class SingleBook extends Component {
   }
 
   render() {
-    const { id, title, description, bookImageURL, authors, price } = this.props.selectedBook
+    const { id, title, description, imageUrl, authors, price } = this.props.selectedBook
+    const orderId = this.props.cart.length > 0? this.props.cart[0].orderId : (this.props.order.id ? this.props.order.id : null);
     return (
       <StyledBookContainer>
-        <StyledImg src={bookImageURL}/>
+        <StyledImg src={imageUrl}/>
         <StyledBookSubContainer>
           <StyledBookTitleContainer>
             <div>
@@ -65,7 +66,7 @@ class SingleBook extends Component {
             </div>
             <StyledPriceContainer>
               <div>$ {price / 100}</div>
-              <AddToCartButton onClick = {() => this.props.handleClickAdd(id, price)}>Add to Cart</AddToCartButton>
+              <AddToCartButton onClick = {() => this.props.handleClickAdd(id, price, imageUrl, title, orderId)}>Add to Cart</AddToCartButton>
             </StyledPriceContainer>
           </StyledBookTitleContainer>
           <div>{description}</div>
@@ -78,12 +79,14 @@ class SingleBook extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  selectedBook: state.selectedBook
+  selectedBook: state.selectedBook,
+  cart: state.cart,
+  order: state.order,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   onLoadSingleBook: (bookId) => dispatch(gettingSingleBook(bookId)),
-  handleClickAdd: (bookId, price) => dispatch(addingToCart(bookId, price))
+  handleClickAdd: (bookId, price, imageUrl, title, orderId) => dispatch(addingToCart(bookId, price, imageUrl, title, orderId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleBook)

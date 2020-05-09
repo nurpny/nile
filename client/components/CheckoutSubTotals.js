@@ -11,6 +11,7 @@ const StyledTotalsContainer = styled(StyledRightContainer)`
   column-gap: 10px;
   row-gap: 15px;
   align-items: center;
+
 `
 
 export const CheckoutSubTotals = (props) => {

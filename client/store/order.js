@@ -10,6 +10,7 @@ const defaultOrder = {}
 const updateOrder = order => ({type: UPDATE_ORDER, order})
 
 
+
 // Thunk Creators
 export const updatingGrossTot = (orderId, subtotal) => async dispatch => {
   try {
@@ -23,6 +24,15 @@ export const updatingGrossTot = (orderId, subtotal) => async dispatch => {
 export const updatingShipping = (orderId, address, city, state, zipCode) => async dispatch => {
   try {
     const {data} = await axios.put('/api/order/shipping', {orderId, address, city, state, zipCode})
+    dispatch(updateOrder(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const completingOrder = (orderId) => async dispatch => {
+  try {
+    const {data} = await axios.put('/api/order/complete', {orderId})
     dispatch(updateOrder(data))
   } catch (err) {
     console.error(err)

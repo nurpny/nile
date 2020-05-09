@@ -14,9 +14,10 @@ const getCart = cart => ({type: GET_CART, cart})
 
 
 // Thunk Creators
-export const addingToCart = (bookId, price) => async dispatch => {
+export const addingToCart = (bookId, price, imageUrl, title, orderId) => async dispatch => {
   try {
-    const {data} = await axios.post('/api/cart/', {bookId, price})
+    const {data} = await axios.post('/api/cart/', {bookId, price, orderId})
+    data.book = {imageUrl, title};
     dispatch(addToCart(data))
   } catch (err) {
     console.error(err)
