@@ -19,5 +19,21 @@ export const GlobalStyle = createGlobalStyle`
   form {
     width: 100%;
   }
+  a:link {
+    color: ${props => props.theme.colors.grey};
+  }
+
+  a:visited {
+    color: ${props => props.theme.colors.grey};
+  }
+
+  a:hover {
+    color: ${props => props.theme.colors.grey};
+  }
+
+  a:active {
+    color: ${props => props.theme.colors.grey};
+  }
+
 `;
 

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { gettingSessionUser } from './store/user'
-import Nav from './components/nav'
+import { gettingGenres } from './store/genres'
+import Nav from './components/nav/Nav'
 import AllBooks from './components/AllBooks'
 import Routes from './routes'
 
@@ -9,7 +10,8 @@ import Routes from './routes'
 export class app extends Component {
 
   componentDidMount() {
-    this.props.gettingSessionUser()
+    this.props.gettingSessionUser();
+    this.props.onLoadGenres();
   }
 
   render() {
@@ -31,7 +33,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  gettingSessionUser: ()=> dispatch(gettingSessionUser())
+  gettingSessionUser: ()=> dispatch(gettingSessionUser()),
+  onLoadGenres: () => dispatch(gettingGenres())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(app)

@@ -4,7 +4,6 @@ module.exports = [
     {name: "Children's Books"},
     {name: "Comics & Graphic Novels"},
     {name: "Computers & Technology"},
-    {name: "Business & Money"},
     {name: "Cookbooks, Food & Wine"},
     {name: "History"},
     {name: "Literature & Fiction"},

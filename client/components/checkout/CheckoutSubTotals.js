@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components';
-import { StyledRightContainer } from '../themes/StyledContainer'
+import { StyledRightContainer } from '../../themes/StyledContainer'
 
 const StyledTotalsContainer = styled(StyledRightContainer)`
   font-family: ${props => props.theme.fonts.bookTitleFt};

@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ShippingAddress from './ShippingAddress'
-import { updatingShipping } from '../store/order'
+import { updatingShipping } from '../../store/order'
 import styled from 'styled-components'
 
 

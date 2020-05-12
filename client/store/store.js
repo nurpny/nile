@@ -7,6 +7,7 @@ import genres from './genres'
 import selectedBook from './singleBook'
 import cart from './cart'
 import order from './order'
+import selectedGenre from './singleGenre'
 
 const middlewares = [thunkMiddleware];
 if (process.env.NODE_ENV === `development`) {
@@ -15,7 +16,7 @@ if (process.env.NODE_ENV === `development`) {
   middlewares.push(logger);
 }
 
-const rootReducer = combineReducers({user, books, selectedBook, cart, genres, order})
+const rootReducer = combineReducers({user, books, selectedBook, cart, genres, order, selectedGenre})
 const store = compose(applyMiddleware(...middlewares))(createStore)(rootReducer);
 
 export default store

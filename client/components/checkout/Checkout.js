@@ -5,7 +5,7 @@ import CheckoutSubTotals from './CheckoutSubTotals'
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import styled from 'styled-components';
-import { StyledFlexContainer, StyledContainer } from '../themes/StyledContainer'
+import { StyledFlexContainer, StyledContainer } from '../../themes/StyledContainer'
 
 const StyledLeftContainer = styled.section`
 width: 60%;

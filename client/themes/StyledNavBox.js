@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const StyledNavBox = styled.section`
+const StyledNavContainer = styled.section`
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -11,4 +11,12 @@ const StyledNavBox = styled.section`
   border-radius: 2px;
 `
 
-export default StyledNavBox;
+const StyledNavInnerContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  background-color: ${props => props.theme.colors.light};
+  border-radius: 2px;
+  padding: 10px;
+`
+
+export {StyledNavContainer, StyledNavInnerContainer}

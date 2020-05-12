@@ -1,7 +1,7 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
-import {completingOrder} from '../store/order'
+import {completingOrder} from '../../store/order'
 
 const CARD_OPTIONS = {
   iconStyle: 'solid',

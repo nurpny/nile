@@ -1,11 +1,10 @@
 import React, {useState} from 'react'
 import Login from './login'
-
-import Logout from './logout'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import BooksNav from './BooksNav'
+import MyAccountNav from './MyAccountNav'
 
 // Styles
 const StyledNav = styled.nav`
@@ -27,11 +26,14 @@ const StyledSubNav = styled.section`
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   justify-items: center;
-  min-width: 30%;
+  width: 400px;
   img {
     width: 40px;
     height: 40px;
   }
+  @media only screen and (max-width: 600px) {
+  width: 250px;
+}
 `
 
 const url = process.env.URL || "http://localhost:8000/"
@@ -48,12 +50,12 @@ export function nav(props) {
       <StyledSubNav>
       {<div onClick={()=> toggleBooks(!showBooks)}>Books</div>}
       {<div onClick={()=> toggleLogin(!showLogin)}>My Account</div>}
-      {props.user.id && <Logout/>}
       <Link to = "/cart"><img src = {url+"/images/shoppingCart.png"}/></Link>
       </StyledSubNav>
     </StyledNav>
     {!props.user.id && showLogin && <Login/>}
-    {!props.user.id && showBooks && <BooksNav/>}
+    {props.user.id && showLogin && <MyAccountNav/>}
+    {showBooks && <BooksNav/>}
 
     </div>
   )

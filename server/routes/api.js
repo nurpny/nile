@@ -8,6 +8,8 @@ router.use('/genres', require('./genres'))
 
 router.use('/cart', require('./cart'))
 
+router.use('/orderhistory', require('./orderhistory'))
+
 router.use('/order', require('./order'))
 
 module.exports = router

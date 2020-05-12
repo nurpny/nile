@@ -5,14 +5,19 @@ import { gettingBooks } from '../store/books'
 import { Link } from 'react-router-dom'
 import { StyledContainer } from '../themes/StyledContainer'
 
-const StyledBooksContainer = styled(StyledContainer)`
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 10px 30px;
 
+const StyledBooksContainer = styled(StyledContainer)`
+  padding: 10px 30px;
+  flex-direction: column;
 `
 
-const StyledBookSubContainer = styled.section`
+const StyledBooksSubContainer = styled.section`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`
+
+const StyledBookContainer = styled.section`
   max-height: 100%;
   max-width: 100%;
   width: 200px;
@@ -28,6 +33,11 @@ const StyledImg = styled.img`
 
 
 class AllBooks extends Component {
+
+  constructor(props) {
+    super();
+  }
+
   componentDidMount() {
     this.props.onLoadBooks(this.props.match.params.id)
   }
@@ -35,19 +45,23 @@ class AllBooks extends Component {
   render() {
     return (
       <StyledBooksContainer>
-        {this.props.books &&
-          this.props.books.map(book =>
-            <StyledBookSubContainer key={book.id}>
-              <Link to={"/book/" + book.id}><StyledImg src={book.imageUrl} /></Link>
-            </StyledBookSubContainer>)
-        }
+        <div>{this.props.selectedGenre.name}</div>
+        <StyledBooksSubContainer>
+          {this.props.books &&
+            this.props.books.map(book =>
+              <StyledBookContainer key={book.id}>
+                <Link to={"/book/" + book.id}><StyledImg src={book.imageUrl} /></Link>
+              </StyledBookContainer>)
+          }
+        </StyledBooksSubContainer>
       </StyledBooksContainer>
     )
   }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  books: state.books
+  books: state.books,
+  selectedGenre: state.selectedGenre
 })
 
 const mapDispatchToProps = (dispatch) => ({
