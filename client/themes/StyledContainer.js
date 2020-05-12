@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const StyledContainer = styled.section`
 display: flex;
+flex-direction: column;
 background-color: ${props => props.theme.colors.light};
 border: 1px solid ${props => props.theme.colors.border};
 border-radius: 5px;
@@ -12,7 +13,6 @@ margin-top: 10px;
 const StyledLeftContainer = styled(StyledContainer)`
     width: 60%;
     margin: 10px 25px 10px 20px;
-    display: grid;
     @media only screen and (max-width: 600px) {
          width: 100%;
     }

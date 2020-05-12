@@ -103,5 +103,46 @@ router.post('/', async (req, res, next) => {
 })
 
 
+router.put('/', async (req, res, next) => {
+  try {
+    let { orderId, bookId, direction } = req.body;
+    let cart = await Cart.findOne({
+      where: {
+        [Op.and]: [
+          { bookId: bookId },
+          { orderId: orderId }
+        ]
+      }
+    })
+    if (direction === "plus") cart.quantity++;
+    if (direction === "minus") cart.quantity--;
+    await cart.save()
+    res.json(cart)
+  } catch (err) {
+    next(err)
+  }
+})
+
+
+router.delete('/', async (req, res, next) => {
+  try {
+    let { orderId, bookId } = req.query;
+    let cart = await Cart.findOne({
+      where: {
+        [Op.and]: [
+          { bookId: bookId },
+          { orderId: orderId }
+        ]
+      }
+    })
+    console.log("found", cart);
+    await cart.destroy()
+    res.json(cart)
+  } catch (err) {
+    next(err)
+  }
+})
+
+
 
 module.exports = router
