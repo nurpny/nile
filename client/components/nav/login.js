@@ -42,7 +42,7 @@ export const login = (props) => {
     <StyledLoginContainer>
       <StyledForm onSubmit={handleSubmit}>
         <label htmlFor="email">Email </label>
-        <input name="email" type="text" placeholder="Email" onChange={handleChange}></input>
+        <input name="email" type="email" onChange={handleChange}></input>
         <label htmlFor="password">Password </label>
         <input name="password" type="password" onChange={handleChange}></input>
         <button type="submit">Login</button>

@@ -6,7 +6,6 @@ import Logout from '../logout'
 
 const StyledAcctContainer = styled(StyledContainer)`
   flex-direction: column;
-
 `
 
 function MyAccount(props) {

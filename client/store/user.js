@@ -37,10 +37,10 @@ export const loggingIn = (email, password) => async dispatch => {
   }
 }
 
-export const signingUp = (email, password) => async dispatch => {
+export const signingUp = (firstName, lastName, email, phone, password) => async dispatch => {
   let res
   try {
-    res = await axios.post(`/auth/signup`, {email, password})
+    res = await axios.post(`/auth/signup`, {firstName, lastName, email, phone, password})
   } catch (authError) {
     return dispatch(getUser({error: authError}))
   }
