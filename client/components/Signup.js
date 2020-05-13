@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { StyledContainer } from '../themes/StyledContainer'
 import styled from 'styled-components';
 import { signingUp } from '../store/user';
+
+
 const StyledSignupSection = styled.section`
   display: flex;
   align-items: center;
@@ -30,14 +32,16 @@ export const Signup = (props) => {
     ...state, ...newState
   }), { firstName: "", lastName: "", email: "", phone: "", password: "" })
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault()
-    props.signingUp(userInput.firstName, userInput.lastName, userInput.email, userInput.phone, userInput.password)
+    await props.signingUp(userInput.firstName, userInput.lastName, userInput.email, userInput.phone, userInput.password, props.history)
   }
 
   const handleChange = (evt) => {
     setUserInput({ [evt.target.name]: evt.target.value })
   }
+  if (props.user.error) {console.log(props.user.error, typeof(props.user.error), Object.entries(props.user.error))};
+
 
   return (
     <StyledSignupSection>
@@ -59,17 +63,18 @@ export const Signup = (props) => {
           <div> <input name="password" type="password" onChange={handleChange} required='required'></input> </div>
           <button type="submit">Create Your Account</button>
         </StyledSignupForm>
+        <div>{props.user.error && props.user.error.response.data}</div>
       </StyledSignUpContainer>
     </StyledSignupSection>
   )
 }
 
 const mapStateToProps = (state) => ({
-
+  user: state.user
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  signingUp: (firstName, lastName, email, phone, password) => dispatch(signingUp(firstName, lastName, email, phone, password))
+  signingUp: (firstName, lastName, email, phone, password, history) => dispatch(signingUp(firstName, lastName, email, phone, password, history))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup)

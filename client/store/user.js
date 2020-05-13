@@ -37,7 +37,7 @@ export const loggingIn = (email, password) => async dispatch => {
   }
 }
 
-export const signingUp = (firstName, lastName, email, phone, password) => async dispatch => {
+export const signingUp = (firstName, lastName, email, phone, password, history) => async dispatch => {
   let res
   try {
     res = await axios.post(`/auth/signup`, {firstName, lastName, email, phone, password})
@@ -46,7 +46,7 @@ export const signingUp = (firstName, lastName, email, phone, password) => async 
   }
   try {
     dispatch(getUser(res.data))
-//    history.push('/home')
+    history.push('/')
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }
