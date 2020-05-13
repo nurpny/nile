@@ -2,7 +2,6 @@ import { withRouter, Route, Switch } from 'react-router-dom'
 import React from 'react'
 import AllBooks from './components/AllBooks'
 import SingleBook from './components/SingleBook'
-import FrontPage from './components/FrontPage'
 import Cart from './components/Cart'
 import Signup from './components/Signup'
 import Checkout from './components/checkout/Checkout'
@@ -20,7 +19,7 @@ export default function routes() {
       <Route path='/signup' component={Signup} />
       <Route path='/MyAccount' component={MyAccount} />
       <Route path='/ordercomplete' component={OrderComplete} />
-      <Route path='/' component={FrontPage} />
+      <Route path='/' component={AllBooks} />
     </Switch>
   )
 }

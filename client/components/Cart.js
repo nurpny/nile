@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { StyledLeftContainer, StyledRightContainer, StyledFlexContainer} from '../themes/StyledContainer'
 import { updatingGrossTot } from '../store/order'
 import { updatingCart } from '../store/cart'
+import convertToUSD from '../utils/convertToUSD';
 
 const StyledCartTitle = styled.section`
   font-family: ${props => props.theme.fonts.bookTitleFt};
@@ -77,14 +78,14 @@ export class Cart extends Component {
                 x {cartItem.quantity}
                 <StyledQuantSpan onClick={() => this.onClick(cartItem.orderId, cartItem.bookId, cartItem.quantity, "plus", cartItem.book.imageUrl, cartItem.book.title)}> {String.fromCharCode(8593)}  </StyledQuantSpan>
               </div>
-              <div>$ {cartItem.price/100}</div>
+              <div> {convertToUSD(cartItem.price)}</div>
             </ StyledItemContainer>
           )}
 
         </StyledLeftContainer>
         <StyledRightContainer>
           <StyledCartTitle>
-            <div>Subtotal: $ {this.state.subtotal/100} </div>
+            <div>Subtotal: {convertToUSD(this.state.subtotal)} </div>
             <StyledButton type="submit" onClick={this.onSubmit}>Click To Pay</StyledButton>
           </StyledCartTitle>
         </StyledRightContainer>

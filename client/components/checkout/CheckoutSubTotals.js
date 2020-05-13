@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components';
 import { StyledRightContainer } from '../../themes/StyledContainer'
+import convertToUSD from '../../utils/convertToUSD'
 
 const StyledTotalsContainer = styled(StyledRightContainer)`
   font-family: ${props => props.theme.fonts.bookTitleFt};
@@ -18,13 +19,13 @@ export const CheckoutSubTotals = (props) => {
   return (
     <StyledTotalsContainer>
       <div> Subtotal: </div>
-      <div>$ {props.order.grossCost / 100} </div>
+      <div> {convertToUSD(props.order.grossCost)} </div>
       <div> Shipping:  </div>
-      <div>$ {props.order.shippingCost / 100}</div>
+      <div> {convertToUSD(props.order.shippingCost)}</div>
       <div> Taxes: </div>
-      <div> $ {props.order.tax / 100} </div>
+      <div> {convertToUSD(props.order.tax)} </div>
       <div> Total:  </div>
-      <div> $ {props.order.total / 100} </div>
+      <div> {convertToUSD(props.order.total)} </div>
     </StyledTotalsContainer>
   )
 }

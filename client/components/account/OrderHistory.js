@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-
 import { StyledContainer } from '../../themes/StyledContainer'
 import styled from 'styled-components';
 import axios from 'axios';
-
+import convertToUSD from '../../utils/convertToUSD'
 
 const OrderRow = styled.section`
   display: grid;
@@ -11,7 +10,6 @@ const OrderRow = styled.section`
 `
 const StyledOrderContainer = styled(StyledContainer)`
   flex-direction: column;
-
 `;
 
 
@@ -50,10 +48,10 @@ const OrderHistory = () => {
             <div>{order.shippingCity}</div>
             <div>{order.shippingState}</div>
             <div>{order.zipCode}</div>
-            <div>{order.grossCost/100}</div>
-            <div>{order.shippingCost/100}</div>
-            <div>{order.tax/100}</div>
-            <div>{order.total/100}</div>
+            <div>{convertToUSD(order.grossCost)}</div>
+            <div>{convertToUSD(order.shippingCost)}</div>
+            <div>{convertToUSD(order.tax)}</div>
+            <div>{convertToUSD(order.total)}</div>
           </OrderRow>)}
         </div>
     </StyledOrderContainer>

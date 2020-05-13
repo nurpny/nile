@@ -135,7 +135,6 @@ router.delete('/', async (req, res, next) => {
         ]
       }
     })
-    console.log("found", cart);
     await cart.destroy()
     res.json(cart)
   } catch (err) {

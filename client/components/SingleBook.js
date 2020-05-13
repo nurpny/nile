@@ -4,6 +4,7 @@ import { gettingSingleBook } from '../store/singleBook'
 import styled from 'styled-components'
 import { StyledContainer } from '../themes/StyledContainer'
 import { addingToCart } from '../store/cart'
+import convertToUSD from '../utils/convertToUSD'
 
 const StyledImg = styled.img`
   max-width: 40vw;
@@ -65,7 +66,7 @@ class SingleBook extends Component {
               <div>By {authors && authors.reduce((acc, author, idx) => idx == 0 ? `${author.firstName} ${author.lastName}` : `${acc} & ${author.firstName} ${author.lastName}`, "")}</div>
             </div>
             <StyledPriceContainer>
-              <div>$ {price / 100}</div>
+              <div> {convertToUSD(price)}</div>
               <AddToCartButton onClick = {() => this.props.handleClickAdd(id, price, imageUrl, title, orderId)}>Add to Cart</AddToCartButton>
             </StyledPriceContainer>
           </StyledBookTitleContainer>
