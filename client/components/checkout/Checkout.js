@@ -10,7 +10,7 @@ import { StyledFlexContainer, StyledContainer } from '../../themes/StyledContain
 const StyledLeftContainer = styled.section`
 width: 60%;
 margin: 10px 25px 10px 20px;
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   width: 100%;
 }
 `

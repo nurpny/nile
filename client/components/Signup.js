@@ -40,7 +40,6 @@ export const Signup = (props) => {
   const handleChange = (evt) => {
     setUserInput({ [evt.target.name]: evt.target.value })
   }
-  if (props.user.error) {console.log(props.user.error, typeof(props.user.error), Object.entries(props.user.error))};
 
 
   return (

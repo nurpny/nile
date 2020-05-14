@@ -13,7 +13,7 @@ margin-top: 10px;
 const StyledLeftContainer = styled(StyledContainer)`
     width: 60%;
     margin: 10px 25px 10px 20px;
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 900px) {
          width: 100%;
     }
 `
@@ -21,7 +21,7 @@ const StyledLeftContainer = styled(StyledContainer)`
 const StyledRightContainer = styled(StyledContainer)`
     width: 30%;
     margin: 10px 20px 10px 25px;
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 900px) {
          width: 100%;
     }
 `

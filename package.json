@@ -3,12 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "12.13.x"
+  },
   "scripts": {
+    "build-client": "webpack",
     "build-client-watch": "webpack -w",
     "start-server": "nodemon server --ignore public --ignore client",
     "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
     "seed": "NODE_ENV='development' node script/seed.js",
-    "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" --require @babel/polyfill --require @babel/register"
+    "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" --require @babel/polyfill --require @babel/register",
+    "start": "node server/index.js",
+    "deploy": "script/deploy"
   },
   "author": "",
   "license": "ISC",

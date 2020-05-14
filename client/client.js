@@ -7,8 +7,6 @@ import App from './app'
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyle } from './themes/globalStyles'
 import {theme} from './themes/theme'
-import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
 
 
 ReactDOM.render(
@@ -18,7 +16,6 @@ ReactDOM.render(
       <GlobalStyle/>
       <App />
     </ThemeProvider>
-
     </BrowserRouter>
   </Provider>,
   document.getElementById('app')
