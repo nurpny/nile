@@ -22,6 +22,7 @@ async function runSeed() {
     // this allows us to seed the through tables with correct keys
     await books.reduce(async (previousPromise, nextBook) => {
       await previousPromise;
+      console.log("nextBook", nextBook);
       return Book.create(nextBook)
     }, Promise.resolve())
     console.log("books created")
