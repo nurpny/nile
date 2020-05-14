@@ -36,7 +36,7 @@ const StyledSubNav = styled.section`
 }
 `
 
-const url = process.env.URL || "http://localhost:8000/"
+const url = process.env.NODE_ENV === `production`? "https://nilebynp.herokuapp.com/": "http://localhost:8000"
 
 export function nav(props) {
   const [showLogin, toggleLogin] = useState(false);

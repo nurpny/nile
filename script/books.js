@@ -1,4 +1,4 @@
-const url = process.env.URL || "http://localhost:8000/images/"
+const url = process.env.URL+"/images/" || "http://localhost:8000/images/"
 console.log("URL", url);
 module.exports = [
   {
