@@ -12,6 +12,7 @@ Testing: Mocha, chai, enzyme
 
 ## Start in Dev
 First create postgres db "nile" (update package.json's name if different db name is desired)
+To run google API for checkout, update Google API Key in public/index.html file.
 Run `npm run start-dev` to run the app in your local host.
 
 ## Test
