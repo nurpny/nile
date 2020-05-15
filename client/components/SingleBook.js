@@ -10,6 +10,10 @@ const StyledImg = styled.img`
   max-width: 40vw;
   max-height: 80vh;
   border-radius: 5px;
+  @media only screen and (max-width: 800px) {
+    width: 100px;
+    height: 150px;
+  }
 `
 const StyledBookContainer = styled(StyledContainer)`
   flex-direction: row;
@@ -17,6 +21,10 @@ const StyledBookContainer = styled(StyledContainer)`
   justify-content: space-evenly;
   align-items: stretch;
   margin: 10px 50px;
+  @media only screen and (max-width: 800px) {
+    flex-wrap: wrap;
+    margin: 10px 10px;
+  }
 `
 
 const StyledBookSubContainer = styled.section`
@@ -24,6 +32,9 @@ const StyledBookSubContainer = styled.section`
   flex-direction: column;
   padding: 50px;
   justify-content: flex-start;
+  @media only screen and (max-width: 800px) {
+    padding: 10px;
+  }
 `
 
 const StyledBookTitleContainer = styled.section`
@@ -34,6 +45,9 @@ const StyledBookTitleContainer = styled.section`
   justify-content: space-between;
   padding: 50px;
   font-family: ${props => props.theme.fonts.bookTitleFt};
+  @media only screen and (max-width: 800px) {
+    padding: 2px;
+  }
 `
 
 const StyledPriceContainer = styled.section`
@@ -55,10 +69,10 @@ class SingleBook extends Component {
 
   render() {
     const { id, title, description, imageUrl, authors, price } = this.props.selectedBook
-    const orderId = this.props.cart.length > 0? this.props.cart[0].orderId : (this.props.order.id ? this.props.order.id : null);
+    const orderId = this.props.cart.length > 0 ? this.props.cart[0].orderId : (this.props.order.id ? this.props.order.id : null);
     return (
       <StyledBookContainer>
-        <StyledImg src={imageUrl}/>
+        <StyledImg src={imageUrl} />
         <StyledBookSubContainer>
           <StyledBookTitleContainer>
             <div>
@@ -67,7 +81,7 @@ class SingleBook extends Component {
             </div>
             <StyledPriceContainer>
               <div> {convertToUSD(price)}</div>
-              <AddToCartButton onClick = {() => this.props.handleClickAdd(id, price, imageUrl, title, orderId)}>Add to Cart</AddToCartButton>
+              <AddToCartButton onClick={() => this.props.handleClickAdd(id, price, imageUrl, title, orderId)}>Add to Cart</AddToCartButton>
             </StyledPriceContainer>
           </StyledBookTitleContainer>
           <div>{description}</div>
