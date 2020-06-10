@@ -19,7 +19,10 @@ export const BooksNav = (props) => {
     <StyledBookNavContainer>
       <StyledNavInnerContainer>
         <Link to="/books">
-          <div onClick={() => { props.onClick() }}>
+          <div onClick={() => {
+            props.onClick()
+            props.onClickSelectGenre()
+          }}>
             All Books
           </div>
         </Link>

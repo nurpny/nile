@@ -46,7 +46,6 @@ const StyledCart = styled(Link)`
     text-decoration: none;
     color: black;
   }
-
 `
 
 
