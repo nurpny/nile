@@ -1,10 +1,12 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Login from './login'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import BooksNav from './BooksNav'
 import MyAccountNav from './MyAccountNav'
+
+const url = process.env.NODE_ENV === `production` ? "https://nilebynp.herokuapp.com/" : "http://localhost:8000"
 
 // Styles
 const StyledNav = styled.nav`
@@ -27,42 +29,56 @@ const StyledSubNav = styled.section`
   align-items: center;
   justify-items: center;
   width: 400px;
-  img {
-    width: 40px;
-    height: 40px;
-  }
   @media only screen and (max-width: 600px) {
   width: 250px;
 }
 `
 
-const url = process.env.NODE_ENV === `production`? "https://nilebynp.herokuapp.com/": "http://localhost:8000"
+const StyledCart = styled(Link)`
+  background-image: url(${url}/images/shoppingCart.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 25px 0px 0px 35px;
+  color: black;
+  text-decoration: none;
+  &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+    color: black;
+  }
+
+`
+
+
+
 
 export function nav(props) {
   const [showLogin, toggleLogin] = useState(false);
   const [showBooks, toggleBooks] = useState(false);
+  const cartTotal = props.cart.reduce((acc, cartItem) => acc + cartItem.quantity, 0)
   return (
     <div>
-    <StyledNav>
-      <StyledTitle>
-      nile
+      <StyledNav>
+        <StyledTitle>
+          nile
       </StyledTitle>
-      <StyledSubNav>
-      {<div onClick={()=> toggleBooks(!showBooks)}>Books</div>}
-      {<div onClick={()=> toggleLogin(!showLogin)}>My Account</div>}
-      <Link to = "/cart"><img src = {url+"/images/shoppingCart.png"}/></Link>
-      </StyledSubNav>
-    </StyledNav>
-    {!props.user.id && showLogin && <Login/>}
-    {props.user.id && showLogin && <MyAccountNav/>}
-    {showBooks && <BooksNav/>}
+        <StyledSubNav>
+          {<div onClick={() => toggleBooks(!showBooks)}>Books</div>}
+          {<div onClick={() => toggleLogin(!showLogin)}>My Account</div>}
+          <StyledCart to="/cart">{props.cart? cartTotal: 0}</StyledCart>
+        </StyledSubNav>
+      </StyledNav>
+      {!props.user.id && showLogin && <Login />}
+      {props.user.id && showLogin && <MyAccountNav />}
+      {showBooks && <BooksNav />}
 
     </div>
   )
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user
+  user: state.user,
+  cart: state.cart,
 })
 
 
