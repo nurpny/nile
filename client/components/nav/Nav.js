@@ -55,7 +55,7 @@ export function nav(props) {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    // if user clicks outside of wrapperref/outermost div below it will toggleBook/Login
+    // if user clicks outside of wrapperref/outermost div below it will toggleBook/login to false
     const handleClickOutside = (event) => {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
         toggleBooks(false)
@@ -79,9 +79,9 @@ export function nav(props) {
         <StyledSubNav>
           <div onMouseEnter={() => toggleBooks(true)} onMouseLeave={() => toggleBooks(false)}> Books
           {showBooks && <BooksNav/>}</div>
-          <div onMouseEnter={() => toggleLogin(true)}> My Account
-            {!props.user.id && showLogin && <Login toggleLogin={toggleLogin} />}
-            {props.user.id && showLogin && <MyAccountNav toggleLogin={toggleLogin} />}
+          <div onMouseEnter={() => toggleLogin(true)} onMouseLeave={() => toggleLogin(false)}> My Account
+            {!props.user.id && showLogin && <Login />}
+            {props.user.id && showLogin && <MyAccountNav />}
           </div>
           <StyledCart to="/cart">{props.cart ? cartTotal : 0}</StyledCart>
         </StyledSubNav>

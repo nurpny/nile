@@ -11,7 +11,7 @@ const StyledLoginContainer = styled(StyledNavContainer)`
 
 export const MyAccountNav = (props) => {
   return (
-    <StyledLoginContainer onMouseLeave={() => props.toggleLogin(false)}>
+    <StyledLoginContainer>
       <StyledNavInnerContainer>
       <Link to="/MyAccount"><div>Go to My Account</div></Link>
       <Logout/>
