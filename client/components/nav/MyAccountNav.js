@@ -6,15 +6,12 @@ import { StyledNavContainer, StyledNavInnerContainer } from '../../themes/Styled
 import Logout from '../logout'
 
 const StyledLoginContainer = styled(StyledNavContainer)`
-  right: 200px;
-  @media screen and (max-width: 600px) {
-    right: 50px;
-  }
+
 `
 
-export const MyAccountNav = () => {
+export const MyAccountNav = (props) => {
   return (
-    <StyledLoginContainer>
+    <StyledLoginContainer onMouseLeave={() => props.toggleLogin(false)}>
       <StyledNavInnerContainer>
       <Link to="/MyAccount"><div>Go to My Account</div></Link>
       <Logout/>

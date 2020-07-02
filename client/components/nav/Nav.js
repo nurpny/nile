@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Login from './login'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
@@ -48,28 +48,45 @@ const StyledCart = styled(Link)`
   }
 `
 
-
-
-
 export function nav(props) {
   const [showLogin, toggleLogin] = useState(false);
   const [showBooks, toggleBooks] = useState(false);
   const cartTotal = props.cart.reduce((acc, cartItem) => acc + cartItem.quantity, 0)
+  const wrapperRef = useRef(null);
+
+  useEffect(() => {
+    // if user clicks outside of wrapperref/outermost div below it will toggleBook/Login
+    const handleClickOutside = (event) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        toggleBooks(false)
+        toggleLogin(false)
+      }
+    }
+    // bind event listener
+    document.addEventListener('mousedown', handleClickOutside);
+    // unbind event listener on clean up
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    };
+  }, [wrapperRef])
+
   return (
-    <div>
+    <div ref={wrapperRef}>
       <StyledNav>
         <StyledTitle>
           nile
       </StyledTitle>
         <StyledSubNav>
-          {<div onClick={() => toggleBooks(!showBooks)}>Books</div>}
-          {<div onClick={() => toggleLogin(!showLogin)}>My Account</div>}
-          <StyledCart to="/cart">{props.cart? cartTotal: 0}</StyledCart>
+          <div onMouseEnter={() => toggleBooks(true)} onMouseLeave={() => toggleBooks(false)}> Books
+          {showBooks && <BooksNav/>}</div>
+          <div onMouseEnter={() => toggleLogin(true)}> My Account
+            {!props.user.id && showLogin && <Login toggleLogin={toggleLogin} />}
+            {props.user.id && showLogin && <MyAccountNav toggleLogin={toggleLogin} />}
+          </div>
+          <StyledCart to="/cart">{props.cart ? cartTotal : 0}</StyledCart>
         </StyledSubNav>
       </StyledNav>
-      {!props.user.id && showLogin && <Login />}
-      {props.user.id && showLogin && <MyAccountNav />}
-      {showBooks && <BooksNav />}
+
 
     </div>
   )

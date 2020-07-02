@@ -7,7 +7,7 @@ import { StyledNavContainer } from '../../themes/StyledNavBox'
 
 
 const StyledLoginContainer = styled(StyledNavContainer)`
-  right: 10px;
+  right: 20px;
 `
 
 const StyledForm = styled.form`

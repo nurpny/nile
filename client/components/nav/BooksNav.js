@@ -16,7 +16,7 @@ const StyledBookNavContainer = styled(StyledNavContainer)`
 export const BooksNav = (props) => {
 
   return (
-    <StyledBookNavContainer>
+    <StyledBookNavContainer >
       <StyledNavInnerContainer>
         <Link to="/books">
           <div onClick={() => {
